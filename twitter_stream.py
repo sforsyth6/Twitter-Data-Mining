@@ -3,11 +3,9 @@ import json
 from tweepy.streaming import StreamListener
 
 #Twitter authorization
-auth = tweepy.OAuthHandler(consumer_key='uTDerR4hkdMNy2JOp4IMnNJBc',
-                        consumer_secret='61SaSdgC7dUIo3DJk4DNzwrNCH33DHhLVwK3NvCV5SZQLFpvI2')
+auth = tweepy.OAuthHandler(consumer_key=consumer_key, consumer_secret=consumer_secret)
 
-auth.set_access_token('1305197144-ygdGMzLDN6F2YirHU7rICx47QE1Ovok3P8lm6IE',
-                'NzGoADqIPaAfozgzJe1VAmnRQVrCxejNUrPBvVpUXwUQv')
+auth.set_access_token(access_token, access_token_secret)
 
 api = tweepy.API(auth)
 
@@ -15,8 +13,10 @@ class StdOutListener(StreamListener):
 
     def on_data(self, data):
 	data = json.loads(data)
+	#Specify english only tweets
 	if 'lang' in data.keys():
 		if data['lang'] == 'en':
+			#No retweets
 			if 'RT' not in data['text']:
 				print json.dumps(data)
         return None
@@ -25,7 +25,7 @@ class StdOutListener(StreamListener):
         print status
 	return None
 
-#Find the trends
+#Find the trends within the US
 trend = api.trends_place(23424977)
 trends = []
 for i in range(10):
