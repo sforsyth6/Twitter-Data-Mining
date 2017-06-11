@@ -1,5 +1,5 @@
 # Twitter-Data-Mining
-This code is an attempt at data mining twitter. It successfully implements the tweepy twitter api for python to gather tweets based on the top 10 trends within the US and then analyzes certain traits of the data set. The data set used here was approximately 23,000 tweets.
+This code is an attempt at data mining twitter. It successfully implements the tweepy twitter api for python to gather tweets based on the top 10 trends within the US and then analyzes certain features of the tweets. The data set used here was approximately 23,000 tweets.
 
 To collect tweets from the twitter api twitter_stream.py is run and the output is piped into tweets.txt (not contained here because it was too large to upload ~85 MB): python twitter_stream.py > tweets.txt
 This will continue to run until it is manually stopped with (ctr+c) as to allow for me to run it for as long as I wish
